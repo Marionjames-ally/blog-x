@@ -36,7 +36,6 @@ class User(db.Model, UserMixin):
 class Blogs(db.Model):
     __tablename__ = 'blog'
     id = db.Column(db.Integer, primary_key = True)
-    blog_id = db.Column(db.Integer)
     blog_title = db.Column(db.String)
     blog_content = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
@@ -66,9 +65,12 @@ class Comment(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete_comment(self):
+        db.session.delete()
+
     @classmethod
-    def get_comments(cls,blog_id):
-        comments = Comment.query.filter_by(blog_id=blog_id).all()
+    def get_comments(cls,user_id):
+        comments = Comment.query.filter_by(user_id=user_id).all()
 
         return comments
 

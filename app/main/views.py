@@ -47,6 +47,16 @@ def comment(blog_id):
         return redirect(url_for('.index'))
     return render_template('comments.html', comment_form =comment_form)
 
+@main.route('/view/comments/<blog_id>')
+def view_comments(blog_id):
+    '''
+    Function that returs  the comments belonging to a particular pitch
+    '''
+    comments = Comment.get_comments(blog_id)
+    blog_id = blog_id
+
+    return render_template('view_comments.html',comments = comments, blog_id=blog_id)
+
 @main.route('/delete/<blog_id>')
 @login_required
 def delete(blog_id):
