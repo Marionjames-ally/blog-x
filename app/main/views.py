@@ -11,4 +11,4 @@ def quotes(id):
     view quotes page that returns the quotes data
     '''
     quotes = get_quotes(id)
-    render_template('quotes.html')
+    render_template('index.html')
