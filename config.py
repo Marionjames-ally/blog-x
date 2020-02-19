@@ -6,6 +6,7 @@ class Config:
     '''
     SECRET_KEY= os.environ.get('SECRET_KEY')
     QUOTES_BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://moringa:1234@localhost/blog'
 
 class ProdConfig(Config):
     '''
