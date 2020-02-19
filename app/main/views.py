@@ -5,6 +5,7 @@ from flask_login import login_required, current_user
 from . import main
 from ..request import get_quotes
 from .forms import BlogForm, CommentForm
+from .. import db
 
 
 @main.route('/')
@@ -46,3 +47,12 @@ def comment(blog_id):
         return redirect(url_for('.index'))
     return render_template('comments.html', comment_form =comment_form)
 
+@main.route('/delete/<blog_id>')
+@login_required
+def delete(blog_id):
+    deleteitem = Blogs.query.filter_by(id=blog_id).first()
+
+    db.session.delete(deleteitem)
+    db.session.commit()
+
+    return redirect(url_for('main.index'))
