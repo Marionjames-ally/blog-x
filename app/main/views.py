@@ -4,6 +4,7 @@ from ..models import User, Blogs, Comment, Subscriber
 from flask_login import login_required, current_user
 from . import main
 from ..request import get_quotes
+from .forms import BlogForm
 
 
 @main.route('/')
@@ -14,15 +15,21 @@ def index():
     """
     title = 'HOME'
     quotes = get_quotes()
-    return render_template('index.html', title=title, quotes=quotes)
+    blogs = Blogs.query.all()
+    return render_template('index.html', title=title, quotes=quotes, blogs=blogs)
 
 
-@main.route('/quotes/<int:id>')
-def quotes():
-    """
-    view quotes and its data
-    :return:
-    """
-    quote = get_quotes(id)
-    title = 'HOME OF QUOTES'
-    return render_template('quotes.html', quote=quote, title=title)
+#  function to add blog
+@main.route('/blog', methods = ['GET', 'POST'])
+@login_required
+def blog():
+	form = BlogForm()
+	if form.validate_on_submit():
+		title = form.title.data
+		content = form.content.data
+
+		new_blog = Blogs(blog_title = title, blog_content = content, user = current_user)
+		new_blog.save_blog()
+		return redirect (url_for('.index'))
+
+	return render_template('blog.html', blog_form = form)
