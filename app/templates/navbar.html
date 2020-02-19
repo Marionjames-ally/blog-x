@@ -13,6 +13,7 @@
 
         <li >{{current_user.username}}</li>
         {% if current_user.is_authenticated %}
+        <li class="nav navbar-nav navbar-left"><a style=" color: white;" href="{{url_for('main.blog')}}">PostBlog</a></li>
         <li><a href="{{url_for('auth.logout')}}">Sign Out</a></li>
         {% endif %}
 

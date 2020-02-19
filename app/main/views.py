@@ -4,7 +4,7 @@ from ..models import User, Blogs, Comment, Subscriber
 from flask_login import login_required, current_user
 from . import main
 from ..request import get_quotes
-from .forms import BlogForm
+from .forms import BlogForm, CommentForm
 
 
 @main.route('/')
@@ -33,3 +33,16 @@ def blog():
 		return redirect (url_for('.index'))
 
 	return render_template('blog.html', blog_form = form)
+
+@main.route('/comments/<blog_id>', methods = ['GET', 'POST'])
+def comment(blog_id):
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        comment = comment_form.comment.data 
+        blog_id = blog_id
+        user_id = current_user._get_current_object().id
+        new_comment = Comment(comment = comment,user_id = user_id)
+        new_comment.save_comment()
+        return redirect(url_for('.index'))
+    return render_template('comments.html', comment_form =comment_form)
+
