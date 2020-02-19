@@ -1,13 +1,13 @@
-<h1>
-    hello blogs
-</h1>
-<div class="card" style="background-color: #F7E1D7; font-size:15px;  width:90%; margin-top: 50px;">
+{% extends 'base.html'%}
+{% block content %}
+<div>
 
-	<div class="card-body">
-		<p class="card-text">{{quotes.quote}}</p>
+	<div>
+		<p>{{quotes.quote}}</p>
 
-			<div class="card-title" style="margin-left: 10px;">
-			    Created by: <span style="color:#2E86AB ;">{{quotes.author}}</span>
-			</div>
+			<p>
+			    Author:">{{quotes.author}}</span>
+			</p>
 	</div>
 </div>
+{% endblock %}
