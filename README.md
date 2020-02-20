@@ -32,7 +32,7 @@ This app is a simple platform for both users and writers of blogs. The writers s
 * heroku
 
 ## CODEBEAT BADGE
-
+[![codebeat badge](https://codebeat.co/badges/9f2a3cf2-bebf-48bc-b569-95cab117bc30)](https://codebeat.co/projects/github-com-marionjames-ally-blog-x-master)
 
 ## Support and contact details
 If in any case you come across any isssues when using this application, kindly contact me.@[marionjames2018@gmail.com]. Incase of any contributions fork the repo add your contributions.
