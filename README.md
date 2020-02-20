@@ -35,3 +35,4 @@ This app is a simple platform for both users and writers of blogs. The writers s
 If in any case you come across any isssues when using this application, kindly contact me.@[marionjames2018@gmail.com]. Incase of any contributions fork the repo add your contributions.
 
 ### License
+[MIT ©MARION 2019](https://github.com/Marionjames-ally/blog-x/blob/master/license)
