@@ -16,17 +16,16 @@
     <h3 style="color:blue;">Comments:</h3>
   </a>
 
-  <h6> &nbsp; &nbsp; <span style="font-weight:bolder">Found :</span> &nbsp; <span
+  <h6> <span style="font-weight:bolder">Found :</span> <span
       style="font-family:Bellefair; font-size:18px;">{{ comments | count }} Comments</span></h6>
   <hr>
-  {% if comments %}
-    {% for item in comments %}
+  {% if comments%}
+    {% for contents in comments %}
       <div class="panel">
-        <p style="font-family:Bellefair; font-size:20px; padding:10px; text-align:center;">{{item.comment}}</p>
+        <p style="font-family:Bellefair; font-size:20px; padding:10px; text-align:center;">{{contents.comment}}</p>
         <h5>&nbsp;&nbsp;Comment by: &nbsp;<span
-            style="color:blue;font-family:Bellefair; font-size:20px;">{{item.username}}</span></h5>
+            style="color:blue;font-family:Bellefair; font-size:20px;">{{current_user.username}}</span></h5>
         {% if current_user.is_authenticated %}
-          <a class="btn btn-outline-danger" href="{{url_for('main.delComment',id=id)}}">Delete</a>
         {% endif %}
       </div>
     {%endfor%}

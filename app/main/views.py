@@ -39,7 +39,7 @@ def blog():
 def comment(blog_id):
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
-        comment = comment_form.content.data 
+        comment = comment_form.comment.data 
         blog_id = blog_id
         user_id = current_user._get_current_object().id
         new_comment = Comment(comment = comment,user_id = user_id)
@@ -64,14 +64,14 @@ def update_blog(blog_id):
     return render_template('update_blog.html',
                            update_blog_form=form)
 
-@main.route('/view/comments/<int:id>')
-def view_comments(id):
+@main.route('/view/comments/<blog_id>')
+def view_comments(blog_id):
     '''
     Function that returs  the comments belonging to a particular pitch
     '''
-    comments = Comment.get_comments(id)
+    comments = Comment.get_comments(blog_id)
 
-    return render_template('view_comments.html',comments = comments, id=id)
+    return render_template('view_comments.html',comments = comments, blog_id=blog_id)
 
 @main.route('/delete/<blog_id>')
 @login_required
