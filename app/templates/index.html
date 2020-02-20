@@ -24,12 +24,9 @@
 							</div>
 							<div class="card-body">
 								<p class="card-text">{{blog.blog_content}}</p>
-                <p> &nbsp; &nbsp; <span style="font-weight:bolder">Found :</span> &nbsp; <span
-      style="font-family:Bellefair; font-size:18px;">{{ comments | count }} Comments</span></p>
 								<a href="{{url_for('.comment',blog_id = blog.id)}}" class="btn btn-info btn-sm"> COMMENT</a>
-								<a href="{{url_for('.delete',blog_id = blog.id)}}" class="btn btn-outline-warning">DELETE</a>
-                <a href="{{ url_for('.view_comments', blog_id=blog.id) }}" style="font-size:15px;" class="btn btn-primary">Comments</a>
-							</div>
+								<a href="{{url_for('.delete',blog_id = blog.id)}}" class="btn btn-warning">DELETE</a>
+                <a href="{{ url_for('main.view_comments', id=blog.id) }}" style="font-size:15px;" class="btn btn-primary">Comments</a>							</div>
             </div>
 					</div>
 				{% endfor %}
